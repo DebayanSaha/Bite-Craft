@@ -1,9 +1,10 @@
 require('dotenv').config();
 
 const express  = require('express');
-const cookie = require('cookie-parser');
 const cookieParser = require('cookie-parser');
-const auth = require('./routes/auth.route');
+
+const authRoutes = require('./routes/auth.route');
+const foodRoutes = require('./routes/food.route')
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/',(req,res)=>{
     res.send('Hello')
 });
 
-app.use('/api/auth',auth);
+app.use('/api/auth', authRoutes);
+app.use('/', foodRoutes);
 
 module.exports = app;

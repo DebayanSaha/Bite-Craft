@@ -1,6 +1,7 @@
 const { json } = require("express");
 
 const userModel = require("../models/user.models");
+
 const foodPartnerModel = require('../models/foodPartner.models');
 
 const bcrypt = require("bcrypt");
