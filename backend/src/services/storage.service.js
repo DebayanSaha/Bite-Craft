@@ -7,7 +7,7 @@ const client = new ImageKit({
 });
 
 async function uploadFile(file, fileName) {
-    const response = await client.files.upload({ file: file , filename: fileName});
+    const response = await client.files.upload({ file: file.toString("base64") , fileName: fileName});
 
     return response;
 }

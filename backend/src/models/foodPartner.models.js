@@ -30,7 +30,7 @@ const foodPartnerSchema = mongoose.Schema(
     },
   },
   {
-    timeStamps: true,
+    timestamps: true,
   },
 );
 

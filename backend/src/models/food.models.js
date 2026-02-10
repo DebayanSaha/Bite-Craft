@@ -20,7 +20,7 @@ const foodSchema = mongoose.Schema(
     },
   },
   {
-    timeStamps: true,
+    timestamps: true,
   },
 );
 
