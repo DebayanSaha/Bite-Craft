@@ -182,6 +182,7 @@ async function logoutFoodPartner(req, res) {
   });
 }
 
+
 module.exports = {
   registerUser, loginUser, logoutUser,
   registerFoodPartner , loginFoodPartner , logoutFoodPartner,
