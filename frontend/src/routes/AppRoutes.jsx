@@ -4,11 +4,13 @@ import PartnerLogin from '../pages/food-partner/PartnerLogin'
 import UserRegister from '../pages/user/UserRegister'
 import UserLogin from '../pages/user/UserLogin'
 import PartnerRegister from '../pages/food-partner/PartnerRegister'
+import LandingPage from '../pages/hero/LandingPage'
 
 const AppRoutes = () => {
   return (
     <Router>
         <Routes>
+            <Route path='/' element={<LandingPage/>}/>
             {/* Partner */}
             <Route path='/user/register' element={<UserRegister/>} />
             <Route path='/user/login' element={<UserLogin/>} />
