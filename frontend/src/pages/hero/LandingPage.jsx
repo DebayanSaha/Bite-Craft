@@ -1,31 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const LandingPage = () => {
+  const nav = useNavigate();
+
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      
-      {/* Background Image */}
-      <img
-        src="/images/background/1771174341548.png"
-        alt="Food Background"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
-      {/* Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-
-      {/* Middle Content */}
-      <div className="absolute bottom-60 w-full px-6 pb-10 text-center text-white">
-        
-        {/* Website Name */}
-        <h1 className="text-3xl font-[Font2] tracking-wide mb-4">
-          Bitecraft
-        </h1>
-
-        {/* Get Started Button */}
-        <button className="w-40 bg-yellow-400 text-black text-xl font-[Font1] py-5 rounded-full shadow-lg active:scale-95 transition-transform duration-150">
-          Get Started
-        </button>
+    <div className="relative bg-black h-screen w-full flex items-center justify-center">
+      <div className="bg-[url('/images/background/387624.png')] bg-cover bg-center h-full w-full md:w-1/2 p-4">
+        <div className='absolute left-1/2 -translate-x-1/2 top-60 h-20 w-[90%] flex items-center justify-center'>
+          <h1 className=' mt-0 text-[18vw] font-[font4] font-medium uppercase'>Bite<span className='text-orange-800'>craft</span></h1>
+        </div>
+        <button onClick={()=>nav('/user/register')} className='absolute h-10 w-36 bottom-70 left-1/2 -translate-x-1/2 font-[font1] text-[15px] text-red-900 bg-white/20 border border-white/10 backdrop-blur-[2px] rounded-full shadow-lg shadow-amber-600 active:scale-95 transition-transform duration-150'>Get Started</button>
       </div>
     </div>
   )

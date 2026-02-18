@@ -2,13 +2,18 @@
 
 @font-face {
   font-family: 'Font1';
-  src: url('/font/font1.woff2');
+  src: url('/font/Quizlo DEMO.otf');
 }
 @font-face {
   font-family: 'Font2';
-  src: url('/font/font2.woff2');
+  src: url('/font/Rantaro-Demo.otf');
 }
 @font-face {
   font-family: 'Font3';
-  src: url('/font/font3.woff2');
+  src: url('/font/Talina DEMO.otf');
 }
+@font-face {
+  font-family: 'Font4';
+  src: url('/font/Moliga DEMO.otf');
+}
+
