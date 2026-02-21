@@ -2,18 +2,39 @@
 
 @font-face {
   font-family: 'Font1';
-  src: url('/font/Quizlo DEMO.otf');
+  src: url('/font/font1.woff2');
 }
 @font-face {
   font-family: 'Font2';
-  src: url('/font/Rantaro-Demo.otf');
+  src: url('/font/font2.woff2');
 }
 @font-face {
   font-family: 'Font3';
-  src: url('/font/Talina DEMO.otf');
+  src: url('/font/font3.woff2');
 }
 @font-face {
   font-family: 'Font4';
-  src: url('/font/Moliga DEMO.otf');
+  src: url('/font/font4.woff2');
 }
+@font-face {
+  font-family: 'Font5';
+  src: url('/font/font5.woff2');
+}
+@font-face {
+  font-family: 'Font6';
+  src: url('/font/font6.woff2');
+}
+@font-face {
+  font-family: 'Font7';
+  src: url('/font/font7.woff2');
+}
+@font-face {
+  font-family: 'Font8';
+  src: url('/font/font8.woff2');
+}
+@font-face {
+  font-family: 'Font9';
+  src: url('/font/font9.woff2');
+}
+
 
