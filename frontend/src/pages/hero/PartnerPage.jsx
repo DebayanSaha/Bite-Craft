@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PartnerPage = () => {
+    const nav = useNavigate()
   const msg = [
     "Increase your online orders",
     "Reach customers far away from you",
@@ -38,7 +40,7 @@ const PartnerPage = () => {
         </h1>
         <div className="absolute right-0 top-5 md:w-70 w-45 font-[font2] text-[#E8E4D7] flex md:gap-10 gap-5">
           <button
-            onClick={() => nav("/user/login")}
+            onClick={() => nav("/partner/login")}
             className="cursor-pointer bg-yellow-500 font-[font5] font-semibold shadow-xl shadow-orange-900/30  md:px-6 px-4 md:py-3 py-2 md:text-xl text-zinc-800 rounded-2xl "
           >
             Connect your Restaurant{" "}
