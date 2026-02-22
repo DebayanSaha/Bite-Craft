@@ -47,7 +47,7 @@ const UserRegister = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
             <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
-              type="string"
+              type="text"
               name="firstname"
               placeholder="Firstname"
               value={formData.firstname}
@@ -58,7 +58,7 @@ const UserRegister = () => {
           </div>
            <div>
             <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
-              type="string"
+              type="text"
               name="lastname"
               placeholder="Lastname"
               value={formData.lastname}

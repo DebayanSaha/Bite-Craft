@@ -91,7 +91,7 @@ const PartnerRegister = () => {
             <div>
               <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
-                type="bigInt"
+                type="tel"
                 name="phoneNo"
                 placeholder="Mobile No."
                 value={formData.phoneNo}
