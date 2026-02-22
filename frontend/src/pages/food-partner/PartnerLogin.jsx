@@ -5,6 +5,7 @@ const PartnerLogin = () => {
   const nav = useNavigate();
   const [formData, setformData] = useState({
     email: "",
+    phoneNo: "",
     password: ""
   });
 
@@ -20,6 +21,7 @@ const PartnerLogin = () => {
     console.log("Login Data:", formData);
     setformData({
       email: "",
+      phoneNo: "",
       password: ""
     })
   }
@@ -35,7 +37,7 @@ const PartnerLogin = () => {
         </h1>
         <p className="text-gray-600 mb-6 md:text-center">
           or{" "}
-          <span onClick={()=>nav('/user/register')} className="text-orange-500 text-2xl md:text-3xl font-[font7] cursor-pointer">
+          <span onClick={()=>nav('/partner/register')} className="text-orange-500 text-2xl md:text-3xl font-[font7] cursor-pointer">
             create an account
           </span>
         </p>
@@ -52,6 +54,17 @@ const PartnerLogin = () => {
               
             />
           </div>
+          <div>
+            <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+                type="bigInt"
+                name="phoneNo"
+                placeholder="Mobile No."
+                value={formData.phoneNo}
+                onChange={handleChange}
+                required
+                
+              />
+            </div>
 
           {/* Password */}
           <div>
