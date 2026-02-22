@@ -52,7 +52,7 @@ const PartnerPage = () => {
           <span className="text-[#f4ca59]  font-[font5]">Partner</span> with us.
         </h1>
       </div>
-      <div className="md:h-60 absolute md:bottom-15 left-1/2 -translate-x-1/2 w-full flex items-center justify-center px-6 ">
+      <div className="md:h-60 absolute md:bottom-15 top-90 left-1/2 -translate-x-1/2 w-full flex items-center justify-center px-6 ">
         <div
           className="relative z-10 md:w-80 backdrop-blur-xl bg-white/10 shadow-zinc-700  border border-white/20 rounded-2xl p-3 shadow-2xl overflow-hidden"
         >
