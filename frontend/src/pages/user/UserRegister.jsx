@@ -103,7 +103,7 @@ const UserRegister = () => {
         </div>
       </div>
       
-    </div>//is u am i do is walhaaaaa
+    </div>
   )
 }
 export default UserRegister
