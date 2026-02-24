@@ -10,6 +10,7 @@ const PartnerRegister = () => {
     phoneNo: "",
     storeName: "",
     password: "",
+    confirmPassword: ""
   });
 
   const handleChange = (e) => {
@@ -29,6 +30,7 @@ const PartnerRegister = () => {
       phoneNo: "",
       storeName: "",
       password: "",
+      confirmPassword: ""
     });
   };
 
@@ -55,7 +57,7 @@ const PartnerRegister = () => {
         </p>
         <div className="w-full h-70">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* First & Last Name Row */}
+            
             <div className="flex gap-4">
               <input
                 className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
@@ -113,13 +115,22 @@ const PartnerRegister = () => {
             </div>
 
             {/* Password */}
-            <div>
+            <div className="flex gap-4">
               <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
                 onChange={handleChange}
                 required
               />
@@ -130,7 +141,7 @@ const PartnerRegister = () => {
               type="submit"
               className="cursor-pointer rounded-2xl font-[font8] text-2xl tracking-[1px] w-full bg-orange-500 hover:bg-orange-600 text-white py-4 transition"
             >
-              Login
+              Signup
             </button>
           </form>
         </div>
