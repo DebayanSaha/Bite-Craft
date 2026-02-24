@@ -37,7 +37,24 @@ const UserLogin = () => {
       });
     }
 
-    
+    if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
+      return toast.error("Password should contain special char", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style: {
+          fontFamily: "font8",
+          letterSpacing: "1px",
+        },
+      });
+    }
+
 
     try {
       const res = await axios.post(
