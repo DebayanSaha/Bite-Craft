@@ -95,7 +95,17 @@ const UserRegister = () => {
     
     try {
       const res = await axios.post('http://localhost:3000/api/auth/user/register', formData)
-      console.log(res.data)
+      toast.success('Account successfully created!', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+      })
       setformData({
         firstName:"",
         lastName:"",
@@ -103,7 +113,10 @@ const UserRegister = () => {
         password: "",
         confirmPassword: ""
       })
-      nav("/user/login");
+      setTimeout(()=>{
+        nav("/user/login");
+      },2600)
+      
     } catch (error) {
       console.error(error.response?.data || error.message);
     }
