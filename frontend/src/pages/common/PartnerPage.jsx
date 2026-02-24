@@ -32,7 +32,7 @@ const PartnerPage = () => {
         muted
         loop
         className="absolute w-full h-full object-cover -z-10"
-        src="/videos/bg/0221.mp4"
+        src="/videos/bg/partnerbg.mp4"
       />
       <div className="relative w-full h-30 p-3">
         <h1 className="font-[font9] md:text-5xl md:ml-3 text-3xl text-[#E8E4D7] md:tracking-[2px] tracking-[1px] mt-2 md:mt-4">

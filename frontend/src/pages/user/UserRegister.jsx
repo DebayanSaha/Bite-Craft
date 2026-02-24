@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const UserRegister = () => {
   const nav = useNavigate();
   const [formData, setformData] = useState({
-    firstname:"",
-    lastname:"",
+    firstName:"",
+    lastName:"",
     email: "",
     password: "",
     confirmPassword: ""
@@ -18,16 +19,24 @@ const UserRegister = () => {
     })
   }
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault();
-    console.log("Login Data:", formData);
-    setformData({
-      firstname:"",
-      lastname:"",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    })
+    
+    try {
+      const res = await axios.post('http://localhost:3000/api/auth/user/register', formData)
+      console.log(res.data)
+      setformData({
+        firstName:"",
+        lastName:"",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      })
+      nav("/user/login");
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+    }
+    
   }
 
   return (
@@ -50,18 +59,18 @@ const UserRegister = () => {
             <div className='flex gap-4'>
             <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
               type="text"
-              name="firstname"
+              name="firstName"
               placeholder="Firstname"
-              value={formData.firstname}
+              value={formData.firstName}
               onChange={handleChange}
               required
               
             />
             <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
               type="text"
-              name="lastname"
+              name="lastName"
               placeholder="Lastname"
-              value={formData.lastname}
+              value={formData.lastName}
               onChange={handleChange}
               required
               
