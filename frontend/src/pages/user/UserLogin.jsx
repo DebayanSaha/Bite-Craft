@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Slide, toast } from 'react-toastify';
 
 const UserLogin = () => {
   const nav = useNavigate();
@@ -15,9 +17,33 @@ const UserLogin = () => {
     })
   }
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault();
-    console.log("Login Data:", formData);
+
+    try {
+      const res = await axios.post('https://localhost:3000/api/auth/user/login', formData);
+      toast.success('Loggedin successfully!', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+      })
+      setformData({
+        email: "",
+        password: ""
+      })
+      setTimeout(()=>{
+        nav('/user/feed')
+      },2600)
+
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+    }
     setformData({
       email: "",
       password: ""
