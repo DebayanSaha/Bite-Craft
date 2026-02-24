@@ -8,6 +8,7 @@ const PartnerRegister = () => {
     lastname: "",
     email: "",
     phoneNo: "",
+    address:"",
     storeName: "",
     password: "",
     confirmPassword: ""
@@ -28,6 +29,7 @@ const PartnerRegister = () => {
       lastname: "",
       email: "",
       phoneNo: "",
+      address:"",
       storeName: "",
       password: "",
       confirmPassword: ""
@@ -79,7 +81,7 @@ const PartnerRegister = () => {
                 required
               />
             </div>
-            <div>
+            <div className="flex gap-4">
               <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="email"
@@ -89,8 +91,7 @@ const PartnerRegister = () => {
                 onChange={handleChange}
                 required
               />
-            </div>
-            <div>
+           
               <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="tel"
@@ -101,6 +102,7 @@ const PartnerRegister = () => {
                 required
               />
             </div>
+            
 
             <div>
               <input
@@ -113,7 +115,17 @@ const PartnerRegister = () => {
                 required
               />
             </div>
-
+            <div>
+              <input 
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                type="text"
+                name="address"
+                placeholder="Store Address"
+                value = {formData.address}
+                onChange={handleChange}
+                required
+              />
+            </div>
             {/* Password */}
             <div className="flex gap-4">
               <input

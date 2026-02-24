@@ -4,8 +4,8 @@ import PartnerLogin from '../pages/food-partner/PartnerLogin'
 import UserRegister from '../pages/user/UserRegister'
 import UserLogin from '../pages/user/UserLogin'
 import PartnerRegister from '../pages/food-partner/PartnerRegister'
-import LandingPage from '../pages/hero/LandingPage'
-import PartnerPage from '../pages/hero/PartnerPage'
+import LandingPage from '../pages/common/LandingPage'
+import PartnerPage from '../pages/common/PartnerPage'
 
 const AppRoutes = () => {
   return (
