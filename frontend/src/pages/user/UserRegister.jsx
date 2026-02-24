@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+ import { toast,  Slide } from 'react-toastify';
 
 const UserRegister = () => {
   const nav = useNavigate();
@@ -21,6 +22,76 @@ const UserRegister = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
+
+    if(formData.password.length < 8){ 
+      return toast.error('Password should be min 8 char', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style:{
+          fontFamily:'font8',
+          letterSpacing: '1px'
+        }
+      });}
+
+      if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
+          return toast.error('Password should contain special char', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+          style:{
+            fontFamily:'font8',
+            letterSpacing: '1px'
+          }
+        });
+      }
+
+      if (!/[A-Z]/.test(formData.password)) {
+        return toast.error('Password should contain atleast one uppercase', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+          style:{
+            fontFamily:'font8',
+            letterSpacing: '1px'
+          }
+        })
+      }
+      if(formData.password !== formData.confirmPassword){
+        return toast.error('Password and confirm password must be same', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style:{
+          fontFamily:'font8',
+          letterSpacing: '1px'
+        }
+      });
+      }
     
     try {
       const res = await axios.post('http://localhost:3000/api/auth/user/register', formData)
@@ -69,7 +140,7 @@ const UserRegister = () => {
             <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
               type="text"
               name="lastName"
-              placeholder="Lastname"
+              placeholder="Lastname"  
               value={formData.lastName}
               onChange={handleChange}
               required
