@@ -19,7 +19,7 @@ const foodPartnerSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    phoneNum: {
+    phoneNo: {
       type: Number,
       required: true,
       unique: true

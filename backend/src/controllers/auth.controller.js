@@ -96,9 +96,9 @@ async function logoutUser(req, res) {
 }
 
 async function registerFoodPartner(req,res){
-  const { firstName, lastName, email, phoneNum, storeName, address, password } = req.body;
+  const { firstName, lastName, email, phoneNo, storeName, address, password } = req.body;
 
-  const isExists = await foodPartnerModel.findOne({$or:[{email}, {phoneNum}]});
+  const isExists = await foodPartnerModel.findOne({$or:[{email}, {phoneNo}]});
   
   if(isExists){
     return res.status(400).json({
@@ -114,7 +114,7 @@ async function registerFoodPartner(req,res){
     email,
     storeName,
     address,
-    phoneNum,
+    phoneNo,
     password: hashedPass,
   })
 
@@ -131,16 +131,16 @@ async function registerFoodPartner(req,res){
       email: foodPartner.email,
       firstName: foodPartner.firstName,
       lastName: foodPartner.lastName,
-      phoneNum: foodPartner.phoneNum,
+      phoneNo: foodPartner.phoneNo,
       storeName: foodPartner.storeName,
     }
   })
 }
 
 async function loginFoodPartner(req, res) {
-  const { email, password, phoneNum } = req.body;
+  const { email, password, phoneNo } = req.body;
 
-  const userExists = await foodPartnerModel.findOne({$or:[{email},{phoneNum}]});
+  const userExists = await foodPartnerModel.findOne({$or:[{email},{phoneNo}]});
 
   if (!userExists) {
     return res.status(400).json({

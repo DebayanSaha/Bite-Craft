@@ -6,8 +6,8 @@ import { Slide, toast } from "react-toastify";
 const PartnerRegister = () => {
   const nav = useNavigate();
   const [formData, setformData] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phoneNo: "",
     address: "",
@@ -112,8 +112,8 @@ const PartnerRegister = () => {
         transition: Slide,
       });
       setformData({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         phoneNo: "",
         address: "",
@@ -122,9 +122,11 @@ const PartnerRegister = () => {
         confirmPassword: "",
       });
       setTimeout(()=>{
-        nav('partner/login');
+        nav('/partner/login');
       },2600)
-    } catch (error) {}
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+    }
   };
 
   return (
@@ -154,9 +156,9 @@ const PartnerRegister = () => {
               <input
                 className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="text"
-                name="firstname"
+                name="firstName"
                 placeholder="Firstname"
-                value={formData.firstname}
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
@@ -164,9 +166,9 @@ const PartnerRegister = () => {
               <input
                 className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="text"
-                name="lastname"
+                name="lastName"
                 placeholder="Lastname"
-                value={formData.lastname}
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
