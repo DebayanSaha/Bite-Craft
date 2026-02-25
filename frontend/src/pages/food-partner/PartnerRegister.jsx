@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Slide, toast } from "react-toastify";
 
 const PartnerRegister = () => {
   const nav = useNavigate();
@@ -21,9 +23,82 @@ const PartnerRegister = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("Login Data:", formData);
+    if(formData.password.length < 8){ 
+      return toast.error('Password should be min 8 char', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style:{
+          fontFamily:'font8',
+          letterSpacing: '1px'
+        }
+      });}
+
+      if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
+          return toast.error('Password should contain special char', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+          style:{
+            fontFamily:'font8',
+            letterSpacing: '1px'
+          }
+        });
+      }
+
+      if (!/[A-Z]/.test(formData.password)) {
+        return toast.error('Password should contain atleast one uppercase', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+          style:{
+            fontFamily:'font8',
+            letterSpacing: '1px'
+          }
+        })
+      }
+      if(formData.password !== formData.confirmPassword){
+        return toast.error('Password and confirm password must be same', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style:{
+          fontFamily:'font8',
+          letterSpacing: '1px'
+        }
+      });
+    }
+    try {
+      const res = await axios.post('http://localhost:3000/')
+    } catch (error) {
+      
+    }
     setformData({
       firstname: "",
       lastname: "",
