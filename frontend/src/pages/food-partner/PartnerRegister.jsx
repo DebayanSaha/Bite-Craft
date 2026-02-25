@@ -10,10 +10,10 @@ const PartnerRegister = () => {
     lastname: "",
     email: "",
     phoneNo: "",
-    address:"",
+    address: "",
     storeName: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -23,10 +23,10 @@ const PartnerRegister = () => {
     });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.password.length < 8){ 
-      return toast.error('Password should be min 8 char', {
+    if (formData.password.length < 8) {
+      return toast.error("Password should be min 8 char", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -36,49 +36,15 @@ const PartnerRegister = () => {
         progress: undefined,
         theme: "dark",
         transition: Slide,
-        style:{
-          fontFamily:'font8',
-          letterSpacing: '1px'
-        }
-      });}
+        style: {
+          fontFamily: "font8",
+          letterSpacing: "1px",
+        },
+      });
+    }
 
-      if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
-          return toast.error('Password should contain special char', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          transition: Slide,
-          style:{
-            fontFamily:'font8',
-            letterSpacing: '1px'
-          }
-        });
-      }
-
-      if (!/[A-Z]/.test(formData.password)) {
-        return toast.error('Password should contain atleast one uppercase', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          transition: Slide,
-          style:{
-            fontFamily:'font8',
-            letterSpacing: '1px'
-          }
-        })
-      }
-      if(formData.password !== formData.confirmPassword){
-        return toast.error('Password and confirm password must be same', {
+    if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
+      return toast.error("Password should contain special char", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -88,27 +54,77 @@ const PartnerRegister = () => {
         progress: undefined,
         theme: "dark",
         transition: Slide,
-        style:{
-          fontFamily:'font8',
-          letterSpacing: '1px'
-        }
+        style: {
+          fontFamily: "font8",
+          letterSpacing: "1px",
+        },
+      });
+    }
+
+    if (!/[A-Z]/.test(formData.password)) {
+      return toast.error("Password should contain atleast one uppercase", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style: {
+          fontFamily: "font8",
+          letterSpacing: "1px",
+        },
+      });
+    }
+    if (formData.password !== formData.confirmPassword) {
+      return toast.error("Password and confirm password must be same", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style: {
+          fontFamily: "font8",
+          letterSpacing: "1px",
+        },
       });
     }
     try {
-      const res = await axios.post('http://localhost:3000/')
-    } catch (error) {
-      
-    }
-    setformData({
-      firstname: "",
-      lastname: "",
-      email: "",
-      phoneNo: "",
-      address:"",
-      storeName: "",
-      password: "",
-      confirmPassword: ""
-    });
+      const res = await axios.post(
+        "http://localhost:3000/api/auth/partner/register",
+        formData,
+      );
+      toast.success("Account successfully created!", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+      setformData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phoneNo: "",
+        address: "",
+        storeName: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setTimeout(()=>{
+        nav('partner/login');
+      },2600)
+    } catch (error) {}
   };
 
   return (
@@ -134,7 +150,6 @@ const PartnerRegister = () => {
         </p>
         <div className="w-full h-70">
           <form onSubmit={handleSubmit} className="space-y-6">
-            
             <div className="flex gap-4">
               <input
                 className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
@@ -166,7 +181,7 @@ const PartnerRegister = () => {
                 onChange={handleChange}
                 required
               />
-           
+
               <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="tel"
@@ -177,7 +192,6 @@ const PartnerRegister = () => {
                 required
               />
             </div>
-            
 
             <div>
               <input
@@ -191,12 +205,12 @@ const PartnerRegister = () => {
               />
             </div>
             <div>
-              <input 
+              <input
                 className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="address"
                 placeholder="Store Address"
-                value = {formData.address}
+                value={formData.address}
                 onChange={handleChange}
                 required
               />
