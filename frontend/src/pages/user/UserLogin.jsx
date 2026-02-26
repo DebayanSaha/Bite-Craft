@@ -106,8 +106,8 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[url('/images/background/user/bg-2.webp')] md:bg-[url('/images/background/user/bg-1.webp')] bg-cover bg-center flex justify-center p-4">
-      <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 shadow-2xl shadow-amber-900 backdrop-blur-[15px] h-110 w-80 md:w-110 rounded-3xl py-2 px-4">
+    <div className="relative min-h-screen bg-[url('/images/background/user/image.png')] md:bg-[url('/images/background/user/image.png')] bg-cover bg-center flex justify-center p-4">
+      <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 md:top-1/2 md:left-auto md:right-5 shadow-2xl shadow-amber-900 backdrop-blur-[15px] h-110 w-80 md:w-110 rounded-3xl py-2 px-4">
         <div
           onClick={() => nav("/")}
           className="absolute right-2 bg-orange-200 h-8 w-8 rounded-full flex items-center justify-center text-2xl"
@@ -117,7 +117,7 @@ const UserLogin = () => {
         <h1 className="text-4xl md:text-6xl md:text-center font-[font8] text-black mt-8">
           Login
         </h1>
-        <p className="text-gray-600 mb-6 md:text-center">
+        <p className="text-gray-300 font-[font5] mb-6 md:text-center">
           or{" "}
           <span
             onClick={() => nav("/user/register")}
