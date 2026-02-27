@@ -27,8 +27,8 @@ const PartnerLogin = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[url('/images/background/foodpartner/bg-2.png')] md:bg-[url('/images/background/foodpartner/bg-1.png')] bg-cover bg-center flex justify-center p-4">
-      <div className="absolute inset-0 md:inset-auto md:left-0 md:top-0 md:h-full md:w-[41%]  bg-[url('/images/background/foodpartner/bg-2.png')] bg-cover bg-center md:bg-none flex items-center justify-center">
+    <div className="relative min-h-screen bg-[url('/images/background/foodpartner/fbg-2.webp')] md:bg-[url('/images/background/foodpartner/fbg-1.webp')] bg-cover bg-center flex justify-center p-4">
+      <div className="absolute inset-0 md:inset-auto md:left-0 md:top-0 md:h-full md:w-[41%]  bg-[url('/images/background/foodpartner/fbg-2.webp')] bg-cover bg-center md:bg-none flex items-center justify-center">
           <div className='absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 shadow-2xl shadow-amber-900 backdrop-blur-[15px] h-130 w-80 md:w-110 rounded-3xl py-2 px-4'>
           <div onClick={()=>nav('/')} className='cursor-pointer absolute right-2 bg-orange-200 h-8 w-8 rounded-full flex items-center justify-center text-2xl'>
             <i className="ri-arrow-left-s-line"></i>
