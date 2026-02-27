@@ -106,8 +106,8 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[url('/images/background/user/img2.png')] md:bg-[url('/images/background/user/image.png')] bg-cover bg-center flex justify-center p-4">
-      <div className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:h-full md:w-[41%]  bg-[url('/images/background/user/img2.png')] bg-cover bg-center md:bg-none flex items-center justify-center">
+    <div className="relative min-h-screen bg-[url('/images/background/user/ubg-2.webp')] md:bg-[url('/images/background/user/ubg-1.webp')] bg-cover bg-center flex justify-center p-4">
+      <div className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:h-full md:w-[41%]  bg-[url('/images/background/user/ubg-2.webp')] bg-cover bg-center md:bg-none flex items-center justify-center">
         <div className=" shadow-2xl shadow-amber-900 backdrop-blur-[15px] h-110 w-80 md:w-110 rounded-3xl py-2 px-4">
           <div
             onClick={() => nav("/")}
