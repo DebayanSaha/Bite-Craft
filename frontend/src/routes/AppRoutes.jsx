@@ -7,6 +7,7 @@ import PartnerRegister from '../pages/food-partner/PartnerRegister'
 import LandingPage from '../pages/common/LandingPage'
 import PartnerPage from '../pages/common/PartnerPage'
 import UserFeed from '../pages/user/UserFeed'
+import PartnerFeed from '../pages/food-partner/PartnerFeed'
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
             <Route path='/partnerwithus' element={<PartnerPage/>}/>
             <Route path='/partner/register' element={<PartnerRegister/>} />
             <Route path='/partner/login' element={<PartnerLogin/>} />
+            <Route path='/partner/feed' element={<PartnerFeed/>} />
         </Routes>
     </Router>
   )

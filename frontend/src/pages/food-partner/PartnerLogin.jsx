@@ -1,8 +1,11 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Slide, toast } from 'react-toastify';
 
 const PartnerLogin = () => {
   const nav = useNavigate();
+  const [loading, setLoading] = useState(false)
   const [formData, setformData] = useState({
     email: "",
     phoneNo: "",
@@ -16,14 +19,48 @@ const PartnerLogin = () => {
     })
   }
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-    console.log("Login Data:", formData);
-    setformData({
-      email: "",
-      phoneNo: "",
-      password: ""
-    })
+    try {
+      setLoading(true);
+      await toast.promise(
+        axios.post('http://localhost:3000/api/auth/partner/login',
+          formData,
+          {withCredentials:true}
+        ),
+        {
+          pending:"Logging in...",
+          success:{
+            render({data}){
+              setTimeout(()=>{
+                nav('/partner/feed')
+              },2600);
+              return "Login successfull!";
+            }
+          },
+          error:{
+            render({data}){
+              return data.response?.data?.message || "Login failed";
+            },
+          },
+        },
+        {
+          autoClose: 2500,
+          theme: "dark",
+          transition: Slide,
+        }
+      );
+      setformData({
+        email: "",
+        phoneNo: "",
+        password: ""
+      })
+    } catch (error) {
+      console.error(error);
+    }finally{
+      setLoading(false);
+    }
+    
   }
 
   return (

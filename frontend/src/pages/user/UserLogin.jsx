@@ -46,6 +46,7 @@ const UserLogin = () => {
         },
       },
       {
+        autoClose: 2500,
         theme: "dark",
         transition: Slide,
       },
