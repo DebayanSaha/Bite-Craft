@@ -131,7 +131,7 @@ const UserLogin = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
-                  className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+                  className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -144,7 +144,7 @@ const UserLogin = () => {
               {/* Password */}
               <div>
                 <input
-                  className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+                  className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300  font-[font6] text-xl tracking-[1px]"
                   type="password"
                   name="password"
                   placeholder="Password"

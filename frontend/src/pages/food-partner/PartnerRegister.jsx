@@ -155,7 +155,7 @@ const PartnerRegister = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex gap-4">
               <input
-                className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="firstName"
                 placeholder="Firstname"
@@ -165,7 +165,7 @@ const PartnerRegister = () => {
               />
 
               <input
-                className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-1/2 rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="lastName"
                 placeholder="Lastname"
@@ -176,7 +176,7 @@ const PartnerRegister = () => {
             </div>
             <div className="flex gap-4">
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -186,7 +186,7 @@ const PartnerRegister = () => {
               />
 
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="tel"
                 name="phoneNo"
                 placeholder="Mobile No."
@@ -198,7 +198,7 @@ const PartnerRegister = () => {
 
             <div>
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="string"
                 name="storeName"
                 placeholder="Store Name"
@@ -209,7 +209,7 @@ const PartnerRegister = () => {
             </div>
             <div>
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="address"
                 placeholder="Store Address"
@@ -221,7 +221,7 @@ const PartnerRegister = () => {
             {/* Password */}
             <div className="flex gap-4">
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -230,7 +230,7 @@ const PartnerRegister = () => {
                 required
               />
               <input
-                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 text-black font-[font6] text-xl tracking-[1px]"
+                className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-2 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"

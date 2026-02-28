@@ -142,7 +142,7 @@ const UserRegister = () => {
           <div className='w-full h-70'>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className='flex gap-4'>
-              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="firstName"
                 placeholder="Firstname"
@@ -151,7 +151,7 @@ const UserRegister = () => {
                 required
                 
               />
-              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="text"
                 name="lastName"
                 placeholder="Lastname"  
@@ -162,7 +162,7 @@ const UserRegister = () => {
               />
             </div>
             <div>
-              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -175,7 +175,7 @@ const UserRegister = () => {
 
             {/* Password */}
             <div>
-              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -186,7 +186,7 @@ const UserRegister = () => {
               />
             </div>
             <div>
-              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 text-black font-[font6] text-xl tracking-[1px]"
+              <input className="w-full rounded-2xl border-2 border-orange-200 focus:border-orange-400 px-4 py-4 md:text-black text-zinc-300 font-[font6] text-xl tracking-[1px]"
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"
