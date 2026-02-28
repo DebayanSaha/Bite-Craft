@@ -94,7 +94,9 @@ const UserRegister = () => {
       }
     
     try {
-      const res = await axios.post('http://localhost:3000/api/auth/user/register', formData)
+      const res = await axios.post('http://localhost:3000/api/auth/user/register', formData,{
+        withCredentials:true
+      })
       toast.success('Account successfully created!', {
           position: "top-right",
           autoClose: 2500,

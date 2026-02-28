@@ -5,6 +5,7 @@ import { Slide, toast } from "react-toastify";
 
 const UserLogin = () => {
   const nav = useNavigate();
+  const [loading, setLoading] = useState(false)
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -19,90 +20,43 @@ const UserLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password.length < 8) {
-      return toast.error("Password should be min 8 char", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-        style: {
-          fontFamily: "font8",
-          letterSpacing: "1px",
-        },
-      });
-    }
-
-    if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
-      return toast.error("Password should contain special char", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-        style: {
-          fontFamily: "font8",
-          letterSpacing: "1px",
-        },
-      });
-    }
-
-    if (!/[A-Z]/.test(formData.password)) {
-      return toast.error("Password should contain atleast one uppercase", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-        style: {
-          fontFamily: "font8",
-          letterSpacing: "1px",
-        },
-      });
-    }
 
     try {
-      const res = await axios.post(
-        "https://localhost:3000/api/auth/user/login",
+      setLoading(true);
+      await toast.promise(
+        axios.post(
+        "http://localhost:3000/api/auth/user/login",
         formData,
-      );
-      toast.success("Loggedin successfully!", {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+        {withCredentials:true}
+      ),
+      {
+        pending:"Logging in...",
+        success:{
+          render({data}){
+            setTimeout(() => {
+              nav("/user/feed");
+            }, 2600);
+            return "Login successfull!";
+          },
+        },
+        error:{
+          render({data}){
+            return data.response?.data?.message || "Login failed";
+          },
+        },
+      },
+      {
         theme: "dark",
         transition: Slide,
-      });
-      setformData({
-        email: "",
-        password: "",
-      });
-      setTimeout(() => {
-        nav("/user/feed");
-      }, 2600);
-    } catch (error) {
-      console.error(error.response?.data || error.message);
+      },
+    )
+    setformData({ email: "", password: "" });
+    }catch (error) {
+        console.error(error);
+    }finally{
+      setLoading(false)
     }
-    setformData({
-      email: "",
-      password: "",
-    });
+      
   };
 
   return (

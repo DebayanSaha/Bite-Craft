@@ -99,6 +99,7 @@ const PartnerRegister = () => {
       const res = await axios.post(
         "http://localhost:3000/api/auth/partner/register",
         formData,
+        {withCredentials:true}
       );
       toast.success("Account successfully created!", {
         position: "top-right",
