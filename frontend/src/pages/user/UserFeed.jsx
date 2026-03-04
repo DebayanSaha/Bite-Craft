@@ -4,19 +4,19 @@ const UserFeed = () => {
   const videos = [
     {
       id: 1,
-      src: "https://www.w3schools.com/html/mov_bbb.mp4",
+      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
       description:
         "Premium handcrafted sneakers built for creators who refuse to follow trends and instead define them.",
     },
     {
       id: 2,
-      src: "https://www.w3schools.com/html/movie.mp4",
+      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
       description:
         "Minimal streetwear collection engineered for comfort, durability, and timeless aesthetic dominance.",
     },
     {
       id: 3,
-      src: "https://www.w3schools.com/html/mov_bbb.mp4",
+      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
       description:
         "Tech-powered backpacks designed for digital nomads navigating cities and continents effortlessly.",
     },
@@ -31,7 +31,7 @@ const UserFeed = () => {
         const video = entry.target;
 
         if (entry.isIntersecting) {
-          video.currentTime = 0;   // Restart video
+          video.currentTime = 0;   // Restart 
           video.play().catch(() => {});
         } else {
           video.pause();
