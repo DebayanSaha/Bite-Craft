@@ -67,17 +67,17 @@ const UserFeed = () => {
 
           {/* Content Overlay */}
           <div className="absolute bottom-5 left-5 right-5 text-white">
-            <div className="absolute bottom-10 flex gap-10">
-              <h2 className="text-4xl font-[font9] uppercase">
-                {video.foodName}
-              </h2>
-              <button className="rounded-lg bg-white px-6 py-3 text-black font-semibold hover:scale-105 transition-transform duration-200">
-                Visit Store
+            <div className="absolute bottom-20 items-center flex gap-3">
+              <div className="bg-black h-10 w-10 rounded-full "></div>
+              <button className="rounded-full bg-orange-500 backdrop-blur-3xl px-5 h-8 text-yellow-200 text-[18px] font-[font8] hover:scale-105 transition-transform duration-200 text-center">
+                  Store <i className="ri-arrow-right-up-line"></i>
               </button>
             </div>
-
-            <p className="clamp-2 mb-3 text-lg font-medium leading-snug">
-              {video.description}
+            <h2 className="absolute bottom-8 text-4xl font-[font9] uppercase">
+              {video.foodName}
+            </h2>
+            <p className="absolute bottom-2 left-5 clamp-2 text-lg text-zinc-300 font-[font6] ">
+               - {video.description}
             </p>
 
             
