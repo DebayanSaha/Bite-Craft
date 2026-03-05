@@ -1,65 +1,61 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const UserFeed = () => {
-  const videos = [
-    {
-      id: 1,
-      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
-      description:
-        "Premium handcrafted sneakers built for creators who refuse to follow trends and instead define them.",
-    },
-    {
-      id: 2,
-      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
-      description:
-        "Minimal streetwear collection engineered for comfort, durability, and timeless aesthetic dominance.",
-    },
-    {
-      id: 3,
-      src: "https://ik.imagekit.io/7lchqfgaf/f18d4291-a63c-4b9d-89c1-9e0794a23c1b_9s8yLM4P6",
-      description:
-        "Tech-powered backpacks designed for digital nomads navigating cities and continents effortlessly.",
-    },
-  ];
+
+  const [videos, setVideos] = useState([]);
 
   const videoRefs = useRef([]);
 
   useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const video = entry.target;
+    const fetchVids = async()=>{
+      try {
+        const res = await axios.get("http://localhost:3000/api/food/",{ withCredentials:true });
+        setVideos(res.data.items); 
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      }
+    };
+    fetchVids();
+  }, [videos])
+  
 
-        if (entry.isIntersecting) {
-          video.currentTime = 0;   // Restart 
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-    },
-    { threshold: 0.75 }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
 
-  videoRefs.current.forEach((video) => {
-    if (video) observer.observe(video);
-  });
+          if (entry.isIntersecting) {
+            video.currentTime = 0;   // Restart 
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.75 }
+    );
 
-  return () => {
     videoRefs.current.forEach((video) => {
-      if (video) observer.unobserve(video);
+      if (video) observer.observe(video);
     });
-  };
-}, []);
+
+    return () => {
+      videoRefs.current.forEach((video) => {
+        if (video) observer.unobserve(video);
+      });
+    };
+  }, []);
 
   return (
-    <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
       {videos.map((video, index) => (
-        <div key={video.id} className="relative h-screen w-full snap-start">
+        <div key={video._id} className="relative h-screen w-full snap-start">
           {/* Video */}
           <video
             ref={(el) => (videoRefs.current[index] = el)}
-            src={video.src}
+            src={video.video}
             className="h-full w-full object-cover"
             muted
             loop
@@ -67,17 +63,25 @@ const UserFeed = () => {
           />
 
           {/* Gradient Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black/70 to-transparent pointer-events-none"></div>
 
           {/* Content Overlay */}
-          <div className="absolute bottom-20 left-5 right-5 text-white">
+          <div className="absolute bottom-5 left-5 right-5 text-white">
+            <div className="absolute bottom-10 flex gap-10">
+              <h2 className="text-4xl font-[font9] uppercase">
+                {video.foodName}
+              </h2>
+              <button className="rounded-lg bg-white px-6 py-3 text-black font-semibold hover:scale-105 transition-transform duration-200">
+                Visit Store
+              </button>
+            </div>
+
             <p className="clamp-2 mb-3 text-lg font-medium leading-snug">
               {video.description}
             </p>
 
-            <button className="rounded-lg bg-white px-6 py-3 text-black font-semibold hover:scale-105 transition-transform duration-200">
-              Visit Store
-            </button>
+            
+
           </div>
         </div>
       ))}
