@@ -19,7 +19,7 @@ const UserFeed = () => {
       }
     };
     fetchVids();
-  }, [videos]);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +47,7 @@ const UserFeed = () => {
         if (video) observer.unobserve(video);
       });
     };
-  }, []);
+  }, [videos]);
 
   return (
     <>
@@ -61,7 +61,6 @@ const UserFeed = () => {
               src={video.video}
               className="h-full w-full object-cover"
               autoPlay
-              muted
               loop
               playsInline
             />
