@@ -8,6 +8,7 @@ import LandingPage from '../pages/common/LandingPage'
 import PartnerPage from '../pages/common/PartnerPage'
 import UserFeed from '../pages/user/UserFeed'
 import PartnerFeed from '../pages/food-partner/PartnerFeed'
+import UserProfile from '../pages/user/UserProfile'
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path='/user/register' element={<UserRegister/>} />
             <Route path='/user/login' element={<UserLogin/>} />
             <Route path='/user/feed' element={<UserFeed/>}/>
+            <Route path='/user/profile' element={<UserProfile/>}/>
             
             {/* Partner */}
             <Route path='/partnerwithus' element={<PartnerPage/>}/>
