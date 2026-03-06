@@ -60,6 +60,7 @@ const UserFeed = () => {
               ref={(el) => (videoRefs.current[index] = el)}
               src={video.video}
               className="h-full w-full object-cover"
+              autoPlay
               muted
               loop
               playsInline
@@ -69,19 +70,24 @@ const UserFeed = () => {
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black/70 to-transparent pointer-events-none"></div>
 
             {/* Content Overlay */}
-            <div className="absolute bottom-5 left-5 right-5 text-white">
-              <div className="absolute bottom-20 items-center flex gap-3">
-                <div className="bg-black h-10 w-10 rounded-full "></div>
-                <button className="rounded-full bg-orange-500 backdrop-blur-3xl px-5 h-8 text-yellow-200 text-[18px] font-[font8] hover:scale-105 transition-transform duration-200 text-center">
+           <div className="absolute bottom-5 left-5 right-5 text-white flex flex-col gap-2">
+
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-black h-10 w-10 rounded-full"></div>
+
+                <button className="rounded-full bg-orange-500 backdrop-blur-3xl px-5 h-8 text-yellow-200 text-[18px] font-[font8] hover:scale-105 transition-transform duration-200">
                   Store <i className="ri-arrow-right-up-line"></i>
                 </button>
               </div>
-              <h2 className="absolute bottom-8 text-4xl font-[font9] uppercase">
+
+              <h2 className="text-4xl font-[font9] uppercase">
                 {video.foodName}
               </h2>
-              <p className="absolute bottom-2 left-5 clamp-2 text-lg text-zinc-300 font-[font6] ">
+
+              <p className="clamp-2 text-lg text-zinc-300 font-[font6] ml-5">
                 - {video.description}
               </p>
+
             </div>
           </div>
         ))}
