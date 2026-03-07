@@ -77,7 +77,7 @@ const UserFeed = () => {
               <div className="flex items-center gap-3 mb-2">
                 <div className="bg-black h-10 w-10 rounded-full"></div>
                 <h1  className="text-xl font-[font6] mr-4 ">{video.foodpartner?.storeName}</h1>
-                <button onClick={()=>nav('/partner/profile')} className="rounded-full bg-orange-500 backdrop-blur-3xl px-5 h-8 text-yellow-200 text-[18px] font-[font8] hover:scale-105 transition-transform duration-200">
+                <button onClick={()=>nav(`/partner/${video.foodpartner._id}`)} className="rounded-full bg-orange-500 backdrop-blur-3xl px-5 h-8 text-yellow-200 text-[18px] font-[font8] hover:scale-105 transition-transform duration-200">
                   Store <i className="ri-arrow-right-up-line"></i>
                 </button>
               </div>
