@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 const PartnerProfile = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
     const fetchPartner = async () => {
@@ -15,6 +16,8 @@ const PartnerProfile = () => {
           withCredentials: true,
         });
         setProfile(res.data.partner);
+        setVideos(res.data.partner.foodItems)
+        
       } catch (error) {
         console.error("Error fetching food partner data:", error);
       }
@@ -22,7 +25,6 @@ const PartnerProfile = () => {
     fetchPartner()
   }, [id]);
 
-  const videos = [{ id: 1 }, { id: 2 }, { id: 3 }];
   return (
     <div className="min-h-screen bg-black flex justify-center items-start p-6 text-white">
       <div className=" w-full h-full">
@@ -46,7 +48,7 @@ const PartnerProfile = () => {
               <div className="h-full w-25 flex flex-col">
                 <h1 className="text-4xl font-[font9] text-center">95</h1>
                 <h2 className="text-sm font-[font9] text-center">
-                  Customer Served
+                  Customers Served
                 </h2>
               </div>
             </div>
@@ -73,9 +75,9 @@ const PartnerProfile = () => {
         </div>
         <div className=" h-full w-full p-2">
           <div className="grid grid-cols-2 gap-4">
-            {videos.map((video) => (
+            {videos.map((v) => (
               <div
-                key={video.id}
+                key={v._id}
                 className="aspect-square bg-[#1a2b46] rounded-xl flex items-center justify-center text-gray-400"
               >
                 video
