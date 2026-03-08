@@ -10,13 +10,13 @@ import UserFeed from '../pages/user/UserFeed'
 import PartnerFeed from '../pages/food-partner/PartnerFeed'
 import UserProfile from '../pages/user/UserProfile'
 import PartnerProfile from '../pages/food-partner/PartnerProfile'
+import PartnerCreateFood from '../pages/food-partner/PartnerCreateFood'
 
 const AppRoutes = () => {
   return (
     <Router>
         <Routes>
             <Route path='/' element={<LandingPage/>}/>
-
             {/* User */}
             <Route path='/user/register' element={<UserRegister/>} />
             <Route path='/user/login' element={<UserLogin/>} />
@@ -29,6 +29,7 @@ const AppRoutes = () => {
             <Route path='/partner/login' element={<PartnerLogin/>} />
             <Route path='/partner/feed' element={<PartnerFeed/>} />
             <Route path='/partner/:id' element={<PartnerProfile/>}/>
+            <Route path='/partner/create-food' element={<PartnerCreateFood/>}/>
         </Routes>
     </Router>
   )

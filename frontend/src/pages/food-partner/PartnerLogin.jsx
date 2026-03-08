@@ -33,7 +33,7 @@ const PartnerLogin = () => {
           success:{
             render({data}){
               setTimeout(()=>{
-                nav('/partner/feed')
+                nav('/partner/create-food')
               },2600);
               return "Login successfull!";
             }
