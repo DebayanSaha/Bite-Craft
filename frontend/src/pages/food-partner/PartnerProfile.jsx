@@ -23,7 +23,7 @@ const PartnerProfile = () => {
         console.error("Error fetching food partner data:", error);
       }
     };
-    fetchPartner()
+    fetchPartner()//storename
   }, [id]);
 
   return (
@@ -35,7 +35,7 @@ const PartnerProfile = () => {
         </div>
         <div className=" h-35 md:h-40 pt-6 px-5 flex gap-5 bg-zinc-300/10 rounded-4xl md:ml-40 md:mr-40">
           <div className="bg-white h-18 w-18 md:h-25 md:w-25 rounded-full md:mt-2 md:mr-10"></div>
-          <div className=" h-30 w-50 md:w-90 flex flex-col">
+          <div className=" h-30 w-50 md:w-90 md:mt-2 flex flex-col">
             <h1 className="text-xl md:text-2xl font-[font7] uppercase">
               {profile?.storeName}
             </h1>
