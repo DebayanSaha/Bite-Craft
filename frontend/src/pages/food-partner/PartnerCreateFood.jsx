@@ -27,7 +27,7 @@ const PartnerCreateFood = () => {
 
         {/* Title */}
         <div className="flex justify-center mb-10">
-          <h1 className="text-black text-2xl font-[font5] md:text-7xl  px-6 py-2 rounded-lg">
+          <h1 className="text-black text-4xl font-[font5] md:text-7xl  px-6 py-0 md:py-2 rounded-lg">
             Share Your <span className="font-[font6] text-white">Dish</span> ..
           </h1>
         </div>
@@ -35,7 +35,7 @@ const PartnerCreateFood = () => {
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           {/* Left Section */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col md:gap-6 gap-3">
 
             {/* Food Name */}
             <input
@@ -43,7 +43,7 @@ const PartnerCreateFood = () => {
               placeholder="Food Item Name"
               value={foodName}
               onChange={(e) => setFoodName(e.target.value)}
-              className="bg-black border border-blue-400 rounded-lg px-4 py-3 text-white focus:outline-none"
+              className="bg-black/20 font-[font6] rounded-xl px-4 py-3 text-white focus:outline-amber-400 text-xl tracking-[1px]"
             />
 
             {/* Description */}
@@ -52,7 +52,7 @@ const PartnerCreateFood = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows="6"
-              className="bg-black border border-blue-400 rounded-xl px-4 py-4 text-white focus:outline-none"
+              className="bg-black/20 font-[font6] rounded-xl px-4 py-4 text-white focus:outline-amber-400 text-xl tracking-[1px]"
             ></textarea>
 
           </div>
@@ -61,7 +61,7 @@ const PartnerCreateFood = () => {
           <div className="flex flex-col justify-between">
 
             {/* Video Upload */}
-            <label className="border border-blue-400 rounded-xl h-40 flex items-center justify-center text-orange-400 cursor-pointer">
+            <label className="bg-black/20 font-[font6] focus:outline-amber-400 text-xl tracking-[1px] rounded-xl md:h-50 h-30 flex items-center justify-center text-white cursor-pointer">
               Video Upload
               <input
                 type="file"
@@ -75,7 +75,7 @@ const PartnerCreateFood = () => {
             <div className="flex justify-end mt-6">
               <button
                 type="submit"
-                className="bg-green-700 hover:bg-green-600 text-white px-6 py-2 rounded-lg"
+                className="bg-green-700 hover:bg-green-600 text-white font-[font6] text-xl px-6 py-2 rounded-full cursor-pointer"
               >
                 Create
               </button>
