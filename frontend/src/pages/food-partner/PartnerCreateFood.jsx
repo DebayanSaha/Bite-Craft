@@ -27,8 +27,8 @@ const PartnerCreateFood = () => {
 
         {/* Title */}
         <div className="flex justify-center mb-10">
-          <h1 className="text-orange-500 text-2xl font-semibold border border-orange-500 px-6 py-2 rounded-lg">
-            Share Your Dish
+          <h1 className="text-black text-2xl font-[font5] md:text-7xl  px-6 py-2 rounded-lg">
+            Share Your <span className="font-[font6] text-white">Dish</span> ..
           </h1>
         </div>
 
