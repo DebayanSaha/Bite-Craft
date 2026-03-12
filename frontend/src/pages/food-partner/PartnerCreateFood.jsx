@@ -24,7 +24,6 @@ const PartnerCreateFood = () => {
     <div className="min-h-screen bg-[url('/images/background/foodpartner/createfoodbg.png')] bg-cover bg-center backdrop-blur-md flex items-center justify-center p-6">
       <div className="z-9 absolute inset-0 bg-black/10"></div>
       <div className="z-10 w-full max-w-4xl bg-black/10 backdrop-blur-sm rounded-2xl p-8">
-
         {/* Title */}
         <div className="flex justify-center mb-10">
           <h1 className="text-black text-4xl font-[font5] md:text-7xl  px-6 py-0 md:py-2 rounded-lg">
@@ -32,11 +31,12 @@ const PartnerCreateFood = () => {
           </h1>
         </div>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {/* Left Section */}
           <div className="flex flex-col md:gap-6 gap-3">
-
             {/* Food Name */}
             <input
               type="text"
@@ -54,12 +54,10 @@ const PartnerCreateFood = () => {
               rows="6"
               className="bg-black/20 font-[font6] rounded-xl px-4 py-4 text-white focus:outline-amber-400 text-xl tracking-[1px]"
             ></textarea>
-
           </div>
 
           {/* Right Section */}
           <div className="flex flex-col justify-between">
-
             {/* Video Upload */}
             <label className="bg-black/20 font-[font6] focus:outline-amber-400 text-xl tracking-[1px] rounded-xl md:h-50 h-30 flex items-center justify-center text-white cursor-pointer">
               Video Upload
@@ -75,17 +73,14 @@ const PartnerCreateFood = () => {
             <div className="flex justify-end mt-6">
               <button
                 type="submit"
-                className="bg-green-700 hover:bg-green-600 text-white font-[font6] text-xl px-6 py-2 rounded-full cursor-pointer"
+                className="bg-[#9bd46a] hover:bg-[#90ca5c] text-white font-[font6] text-xl px-6 py-2 rounded-full cursor-pointer transition-all duration-300"
               >
                 Create
               </button>
             </div>
-
           </div>
-
         </form>
       </div>
-
     </div>
   );
 };
