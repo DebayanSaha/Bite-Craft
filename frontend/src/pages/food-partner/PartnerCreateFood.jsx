@@ -1,127 +1,89 @@
 import React, { useState } from "react";
 
 const PartnerCreateFood = () => {
-  const [video, setVideo] = useState(null);
   const [foodName, setFoodName] = useState("");
   const [description, setDescription] = useState("");
-  const [uploadedVideos, setUploadedVideos] = useState([]);
+  const [video, setVideo] = useState(null);
 
-  const handleUpload = (e) => {
+  const handleVideoChange = (e) => {
+    setVideo(e.target.files[0]);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newVideo = {
-      id: Date.now(),
-      foodName,
-      description,
-      videoURL: URL.createObjectURL(video),
-    };
+    const formData = new FormData();
+    formData.append("foodName", foodName);
+    formData.append("description", description);
+    formData.append("video", video);
 
-    setUploadedVideos([...uploadedVideos, newVideo]);
-
-    setVideo(null);
-    setFoodName("");
-    setDescription("");
+    console.log("Food Data:", { foodName, description, video });
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-[url('/images/background/foodpartner/createfoodbg.png')] bg-cover bg-center backdrop-blur-md flex items-center justify-center p-6">
+      <div className="z-9 absolute inset-0 bg-black/10"></div>
+      <div className="z-10 w-full max-w-4xl bg-black/10 backdrop-blur-sm rounded-2xl p-8">
 
-      <div className="max-w-5xl mx-auto">
+        {/* Title */}
+        <div className="flex justify-center mb-10">
+          <h1 className="text-orange-500 text-2xl font-semibold border border-orange-500 px-6 py-2 rounded-lg">
+            Share Your Dish
+          </h1>
+        </div>
 
-        <h1 className="text-3xl font-bold mb-6">Upload Food Video</h1>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        {/* Upload Section */}
-        <div className="bg-white p-6 rounded-xl shadow-md mb-10">
+          {/* Left Section */}
+          <div className="flex flex-col gap-6">
 
-          <form onSubmit={handleUpload} className="space-y-4">
+            {/* Food Name */}
+            <input
+              type="text"
+              placeholder="Food Item Name"
+              value={foodName}
+              onChange={(e) => setFoodName(e.target.value)}
+              className="bg-black border border-blue-400 rounded-lg px-4 py-3 text-white focus:outline-none"
+            />
+
+            {/* Description */}
+            <textarea
+              placeholder="Food Item Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows="6"
+              className="bg-black border border-blue-400 rounded-xl px-4 py-4 text-white focus:outline-none"
+            ></textarea>
+
+          </div>
+
+          {/* Right Section */}
+          <div className="flex flex-col justify-between">
 
             {/* Video Upload */}
-            <div>
-              <label className="block font-medium mb-2">Upload Video</label>
+            <label className="border border-blue-400 rounded-xl h-40 flex items-center justify-center text-orange-400 cursor-pointer">
+              Video Upload
               <input
                 type="file"
                 accept="video/*"
-                onChange={(e) => setVideo(e.target.files[0])}
-                className="w-full border p-2 rounded"
+                onChange={handleVideoChange}
+                className="hidden"
               />
-            </div>
+            </label>
 
-            {/* Food Name */}
-            <div>
-              <label className="block font-medium mb-2">Food Item Name</label>
-              <input
-                type="text"
-                placeholder="Example: Spicy Chicken Burger"
-                value={foodName}
-                onChange={(e) => setFoodName(e.target.value)}
-                className="w-full border p-2 rounded"
-              />
-            </div>
-
-            {/* Description */}
-            <div>
-              <label className="block font-medium mb-2">Description</label>
-              <textarea
-                placeholder="Write about the dish..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="w-full border p-2 rounded"
-              />
-            </div>
-
-            {/* Preview */}
-            {video && (
-              <video
-                controls
-                className="w-full rounded-lg"
-                src={URL.createObjectURL(video)}
-              />
-            )}
-
-            {/* Upload Button */}
-            <button
-              type="submit"
-              className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600"
-            >
-              Upload Video
-            </button>
-
-          </form>
-        </div>
-
-        {/* Uploaded Videos Section */}
-        <div>
-
-          <h2 className="text-2xl font-semibold mb-4">
-            Your Uploaded Videos
-          </h2>
-
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-
-            {uploadedVideos.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white p-4 rounded-xl shadow-md"
+            {/* Button */}
+            <div className="flex justify-end mt-6">
+              <button
+                type="submit"
+                className="bg-green-700 hover:bg-green-600 text-white px-6 py-2 rounded-lg"
               >
-                <video
-                  src={item.videoURL}
-                  controls
-                  className="rounded-lg mb-2"
-                />
-
-                <h3 className="font-semibold text-lg">
-                  {item.foodName}
-                </h3>
-
-                <p className="text-gray-600 text-sm">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+                Create
+              </button>
+            </div>
 
           </div>
-        </div>
 
+        </form>
       </div>
 
     </div>

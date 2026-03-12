@@ -23,7 +23,7 @@ const PartnerProfile = () => {
         console.error("Error fetching food partner data:", error);
       }
     };
-    fetchPartner()//storename
+    fetchPartner()
   }, [id]);
 
   return (
