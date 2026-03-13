@@ -47,11 +47,18 @@ async function likeFood(req, res) {
             user: user._id,
             food: foodId
         })
+        await foodItemModel.findByIdAndUpdate(foodId,{
+            $inc:{likeCount: -1}
+        })
     }
 
     const like = await likeFoodModel.create({
         user: user._id,
         food: foodId
+    })
+
+    await foodItemModel.findByIdAndUpdate(foodId,{
+        $inc:{likeCount: 1}
     })
 
     res.status(201).json({
