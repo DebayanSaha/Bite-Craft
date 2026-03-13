@@ -1,4 +1,6 @@
 const foodItemModel = require('../models/food.models')
+const likeFoodModel = require('../models/likes.models')
+
 const storageService = require('../services/storage.service')
 const { v4:uuid } = require('uuid')
 
@@ -31,6 +33,17 @@ async function getFoodItems(req,res) {
     })
 }
 
+async function likeFood(req, res) {
+    const {foodId} = req.body;
+    const user = req.user;
+    const isLiked = await likeFoodModel.findOne({
+        user:user._id,
+        food: foodId
+    })
+
+
+}
+
 module.exports={    
-    createFood, getFoodItems
+    createFood, getFoodItems, likeFood
 }
