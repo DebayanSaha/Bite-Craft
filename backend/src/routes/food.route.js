@@ -16,4 +16,7 @@ router.post('/', authMiddleware.authFoodPartnerMiddleware, upload.single('video'
 //protected route for users to see food item
 router.get('/', authMiddleware.authUserMiddleware, foodController.getFoodItems)
 
+// Protected out for users to like reel
+router.post('/like', authMiddleware.authUserMiddleware, foodController.likeFood)
+
 module.exports = router;

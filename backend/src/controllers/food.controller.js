@@ -36,9 +36,27 @@ async function getFoodItems(req,res) {
 async function likeFood(req, res) {
     const {foodId} = req.body;
     const user = req.user;
+
     const isLiked = await likeFoodModel.findOne({
         user:user._id,
         food: foodId
+    })
+
+    if(isLiked){
+        await likeFoodModel.deleteOne({
+            user: user._id,
+            food: foodId
+        })
+    }
+
+    const like = await likeFoodModel.create({
+        user: user._id,
+        food: foodId
+    })
+
+    res.status(201).json({
+        message:"Liked",
+        like
     })
 
 
