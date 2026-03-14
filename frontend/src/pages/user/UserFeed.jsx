@@ -54,7 +54,6 @@ const UserFeed = () => {
 
   return (
     <>
-      <SidePanel />
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
         {videos.map((video, index) => (
           <div key={video._id} className="relative h-screen w-full snap-start">
@@ -67,6 +66,13 @@ const UserFeed = () => {
               loop
               playsInline
               preload="metadata"
+            />
+            <SidePanel
+              foodId={video._id}
+              likeCount={video.likeCount}
+              saveCount = {video.saveCount}
+              isLiked = {video.isLiked}
+              isSaved = {video.isSaved}
             />
 
             {/* Gradient Overlay */}
