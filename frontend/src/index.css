@@ -36,6 +36,10 @@
   font-family: 'Font9';
   src: url('/font/font9.woff2');
 }
+@font-face {
+  font-family: 'Font10';
+  src: url('/font/font10.otf');
+}
 
 @keyframes slide {
   from {

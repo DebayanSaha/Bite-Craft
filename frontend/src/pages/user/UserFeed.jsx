@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Navbar from "../../components/Navbar";
+import SidePanel from "../../components/SidePanel";
 import { useNavigate } from "react-router-dom";
+import LowerNavBar from "../../components/LowerNavBar";
 
 const UserFeed = () => {
   const nav = useNavigate();
@@ -53,7 +54,7 @@ const UserFeed = () => {
 
   return (
     <>
-      <Navbar />
+      <SidePanel />
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
         {videos.map((video, index) => (
           <div key={video._id} className="relative h-screen w-full snap-start">
@@ -94,6 +95,7 @@ const UserFeed = () => {
           </div>
         ))}
       </div>
+      <LowerNavBar />
     </>
   );
 };
