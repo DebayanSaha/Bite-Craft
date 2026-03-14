@@ -1,5 +1,6 @@
 const foodItemModel = require('../models/food.models')
 const likeFoodModel = require('../models/likes.models')
+const saveFoodModel = require('../models/saves.models')
 
 const storageService = require('../services/storage.service')
 const { v4:uuid } = require('uuid')
@@ -69,6 +70,34 @@ async function likeFood(req, res) {
 
 }
 
+async function saveFood(req,res) {
+
+    const {foodId} = req.body;
+    const user = req.user;
+
+    const isSaved = await saveFoodModel.findOne({
+        user: user._id,
+        food: foodId
+    })
+
+    if(isSaved){
+        await saveModel.deleteOne({
+            user: user._id,
+            food: foodId
+        })
+    }
+
+    const save = await saveFoodModel.create({
+        user: user._id,
+        food: foodId
+    })
+    
+    res.status(201).json({
+        message:"Saved",
+        save
+    })
+}
+
 module.exports={    
-    createFood, getFoodItems, likeFood
+    createFood, getFoodItems, likeFood, saveFood
 }
