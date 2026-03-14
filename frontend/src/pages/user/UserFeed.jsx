@@ -73,7 +73,7 @@ const UserFeed = () => {
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black/70 to-transparent pointer-events-none"></div>
 
             {/* Content Overlay */}
-           <div className="absolute bottom-5 left-5 right-5 text-white flex flex-col gap-2">
+           <div className="absolute bottom-15 left-5 right-5 text-white flex flex-col gap-2">
 
               <div className="flex items-center gap-3 mb-2">
                 <div className="bg-black h-10 w-10 rounded-full"></div>
