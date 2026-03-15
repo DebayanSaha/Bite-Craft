@@ -160,7 +160,7 @@ const PartnerProfile = () => {
             {videos.map((v) => (
               <div
                 key={v._id}
-                className="rounded-xl overflow-hidden bg-[#1a2b46] aspect-[3/4]"
+                className="rounded-xl overflow-hidden bg-[#1a2b46] aspect-3/4"
               >
                 <video
                   className="w-full h-full object-cover"
