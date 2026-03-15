@@ -56,10 +56,11 @@ const PartnerCreateFood = () => {
     <div className="min-h-screen bg-[url('/images/background/foodpartner/createfoodbg.webp')] bg-cover bg-center backdrop-blur-md flex items-center justify-center p-6">
       <div className="z-9 absolute inset-0 bg-black/10"></div>
 
-      <div className="z-10 w-full max-w-4xl bg-black/10 backdrop-blur-sm rounded-2xl p-8">
-        <div onClick={()=>{nav('/partnerwithus')}} className="h-10 w-10 bg-black/10 rounded-full flex items-center justify-center text-center cursor-pointer">
-          <i className="ri-arrow-left-s-line text-3xl"></i>
+      <div className="z-10 w-full max-w-4xl bg-black/10 backdrop-blur-sm rounded-2xl md:p-8 p-5">
+        <div onClick={()=>{nav('/partnerwithus')}} className="md:h-10 h-6 w-6 md:w-10 bg-black/10 rounded-full flex items-center justify-center text-center cursor-pointer">
+          <i className="ri-arrow-left-s-line md:text-3xl text-xl"></i>
         </div>
+
         <div className="flex justify-center mb-10">
           <h1 className="text-black text-4xl font-[font5] md:text-7xl px-6 py-0 md:py-2 rounded-lg">
             Share Your <span className="font-[font6] text-white">Dish</span> ..
