@@ -66,7 +66,7 @@ const UserLogin = () => {
         <div className=" shadow-2xl shadow-amber-900 backdrop-blur-[15px] h-110 w-80 md:w-110 rounded-3xl py-2 px-4">
           <div
             onClick={() => nav("/")}
-            className="absolute right-2 bg-orange-200 h-8 w-8 rounded-full flex items-center justify-center text-2xl"
+            className="absolute right-2 bg-orange-200 h-8 w-8 rounded-full flex items-center justify-center text-2xl cursor-pointer"
           >
             <i className="ri-arrow-left-s-line"></i>
           </div>
