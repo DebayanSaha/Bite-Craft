@@ -24,7 +24,7 @@ const PartnerLogin = () => {
     try {
       setLoading(true);
       await toast.promise(
-        axios.post('http://localhost:3000/api/auth/partner/login',
+        axios.post('https://bite-craft.onrender.com/api/auth/partner/login',
           formData,
           {withCredentials:true}
         ),

@@ -13,7 +13,7 @@ const PartnerProfile = () => {
     const fetchPartner = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/partner/${id}`,
+          `https://bite-craft.onrender.com/api/partner/${id}`,
           { withCredentials: true }
         );
 

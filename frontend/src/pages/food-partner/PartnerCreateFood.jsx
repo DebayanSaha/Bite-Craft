@@ -36,7 +36,7 @@ const PartnerCreateFood = () => {
       data.append("description", formData.description);
       data.append("video", video);
 
-      const res = await axios.post("http://localhost:3000/api/food/", data, {
+      const res = await axios.post("https://bite-craft.onrender.com/api/food/", data, {
         withCredentials: true,
       });
 

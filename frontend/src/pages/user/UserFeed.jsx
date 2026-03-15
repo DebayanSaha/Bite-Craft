@@ -13,7 +13,7 @@ const UserFeed = () => {
   useEffect(() => {
     const fetchVids = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/food/", {
+        const res = await axios.get("https://bite-craft.onrender.com/api/food/", {
           withCredentials: true,
         });
         setVideos(res.data.items);

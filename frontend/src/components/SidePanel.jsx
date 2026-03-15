@@ -11,7 +11,7 @@ const SidePanel = ({ foodId, likeCount, saveCount, isLiked, isSaved }) => {
   const like = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/food/like",
+        "https://bite-craft.onrender.com/api/food/like",
         { foodId },
         { withCredentials: true },
       );
@@ -31,7 +31,7 @@ const SidePanel = ({ foodId, likeCount, saveCount, isLiked, isSaved }) => {
   const save = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/food/save",
+        "https://bite-craft.onrender.com/api/food/save",
         { foodId },
         { withCredentials: true },
       );
