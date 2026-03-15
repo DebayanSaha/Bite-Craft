@@ -36,9 +36,13 @@ const PartnerCreateFood = () => {
       data.append("description", formData.description);
       data.append("video", video);
 
-      const res = await axios.post("https://bite-craft.onrender.com/api/food/", data, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "https://bite-craft.onrender.com/api/food/",
+        data,
+        {
+          withCredentials: true,
+        },
+      );
 
       console.log(res.data);
     } catch (error) {
@@ -47,7 +51,7 @@ const PartnerCreateFood = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[url('/images/background/foodpartner/createfoodbg.png')] bg-cover bg-center backdrop-blur-md flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[url('/images/background/foodpartner/createfoodbg.webp')] bg-cover bg-center backdrop-blur-md flex items-center justify-center p-6">
       <div className="z-9 absolute inset-0 bg-black/10"></div>
 
       <div className="z-10 w-full max-w-4xl bg-black/10 backdrop-blur-sm rounded-2xl p-8">
@@ -83,15 +87,18 @@ const PartnerCreateFood = () => {
 
           <div className="flex flex-col gap-4">
             {/* Upload Section (thinner) */}
-            <label className="bg-black/20 font-[font6] rounded-xl md:h-13 h-24 flex items-center justify-center text-white cursor-pointer text-xl tracking-[1px]">
-              Upload Video <i className="ri-cloud-fill ml-2 text-blue-200"></i>
-              <input
-                type="file"
-                accept="video/*"
-                onChange={handleVideoChange}
-                className="hidden"
-              />
-            </label>
+            {!preview && (
+              <label className="bg-black/20 font-[font6] rounded-xl md:h-13 h-24 flex items-center justify-center text-white cursor-pointer text-xl tracking-[1px]">
+                Upload Video{" "}
+                <i className="ri-cloud-fill ml-2 text-blue-200"></i>
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoChange}
+                  className="hidden"
+                />
+              </label>
+            )}
 
             {/* Video Preview */}
             {preview && (
@@ -105,7 +112,8 @@ const PartnerCreateFood = () => {
             )}
 
             {/* Upload Another */}
-            <label className="bg-[#f46853] hover:bg-[#f46853] text-white font-[font6] text-xl px-6 py-2 rounded-full cursor-pointer transition-all duration-300 md:w-[45%] md:ml-25">
+            {preview && (
+              <label className="bg-[#f46853] hover:bg-[#f46853] text-white font-[font6] text-xl px-6 py-2 rounded-full cursor-pointer transition-all duration-300 md:w-[45%] md:ml-25">
               Upload Another <i className="ri-corner-right-up-fill"></i>
               <input
                 type="file"
@@ -114,6 +122,7 @@ const PartnerCreateFood = () => {
                 className="hidden"
               />
             </label>
+          )}
 
             <div className="flex justify-end mt-4">
               <button
