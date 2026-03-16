@@ -117,7 +117,7 @@ const PartnerProfile = () => {
             </div>
           </div>
 
-          {/* desktop */}
+          {/* Desktop */}
           <div className="hidden md:grid grid-cols-4 text-center gap-4">
             <div>
               <p className="text-zinc-400 text-sm">Name</p>
