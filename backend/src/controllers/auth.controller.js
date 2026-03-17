@@ -35,12 +35,7 @@ async function registerUser(req, res) {
     process.env.JWT_TOKEN,
   );
 
-  res.cookie("token", token, {
-    httpOnly: true,       // cannot be accessed by frontend JS
-    secure: true,         // must be true for HTTPS
-    sameSite: 'None',     // allow cross-site requests
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-  });
+  res.cookie("token", token);
 
   res.status(201).json({
     message: "User registered succesfully",
