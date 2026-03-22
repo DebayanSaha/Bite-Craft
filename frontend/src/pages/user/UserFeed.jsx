@@ -54,7 +54,7 @@ const UserFeed = () => {
 
   return (
     <>
-      {/*This is Centered Feed Container */}
+      {/*Centered Feed Container */}
       <div className="h-screen flex justify-center bg-black">
         {/* Fixed width feed like mobile */}
         <div className="w-full max-w-[420px] overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
