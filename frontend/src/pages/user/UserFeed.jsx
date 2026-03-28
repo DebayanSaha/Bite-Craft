@@ -8,6 +8,7 @@ const UserFeed = () => {
   const nav = useNavigate();
   const [videos, setVideos] = useState([]);
   const videoRefs = useRef([]);
+  const observerRef = useRef(null);
 
   useEffect(() => {
     const fetchVids = async () => {
@@ -25,13 +26,30 @@ const UserFeed = () => {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    if (videos.length === 0) return;
+
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
           if (entry.isIntersecting) {
             video.currentTime = 0;
-            video.play().catch(() => {});
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {
+                const resume = () => {
+                  video.play().catch(() => {});
+                  document.removeEventListener("click", resume);
+                  document.removeEventListener("touchstart", resume);
+                };
+                document.addEventListener("click", resume, { once: true });
+                document.addEventListener("touchstart", resume, { once: true });
+              });
+            }
           } else {
             video.pause();
           }
@@ -40,41 +58,62 @@ const UserFeed = () => {
       { threshold: 0.75 },
     );
 
-    videoRefs.current.forEach((video) => {
-      if (video) observer.observe(video);
-    });
+    const timer = setTimeout(() => {
+      videoRefs.current.forEach((video) => {
+        if (video) observerRef.current.observe(video);
+      });
+      const firstVisible = videoRefs.current.find((v) => v);
+      if (firstVisible) {
+        firstVisible.play().catch(() => {});
+      }
+    }, 100);
 
     return () => {
-      videoRefs.current.forEach((video) => {
-        if (video) observer.unobserve(video);
-      });
+      clearTimeout(timer);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
     };
   }, [videos]);
+
+  const setVideoRef = (el, index) => {
+    if (el && el !== videoRefs.current[index]) {
+      videoRefs.current[index] = el;
+      if (observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    }
+  };
 
   return (
     <>
       <div className="h-screen flex justify-center bg-black">
 
-        {/* ── MOBILE: unchanged ── */}
+        {/* ── MOBILE ── */}
         <div className="md:hidden w-full max-w-[420px] overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
           {videos.map((video, index) => (
             <div key={video._id} className="relative h-screen w-full snap-start">
               <video
-                ref={(el) => (videoRefs.current[index] = el)}
+                ref={(el) => setVideoRef(el, index)}
                 src={video.video}
                 className="h-full w-full object-cover"
-                autoPlay
+                muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
               />
-              <SidePanel
-                foodId={video._id}
-                likeCount={video.likeCount}
-                saveCount={video.saveCount}
-                isLiked={video.isLiked}
-                isSaved={video.isSaved}
-              />
+
+              {/* Mobile SidePanel — absolute positioned here since SidePanel no longer self-positions */}
+              <div className="absolute right-4 bottom-32 z-10">
+                <SidePanel
+                  foodId={video._id}
+                  likeCount={video.likeCount}
+                  saveCount={video.saveCount}
+                  isLiked={video.isLiked}
+                  isSaved={video.isSaved}
+                />
+              </div>
+
               <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
               <div className="absolute bottom-24 left-5 right-5 text-white flex flex-col gap-2">
                 <div className="flex items-center gap-3 mb-2">
@@ -96,17 +135,16 @@ const UserFeed = () => {
           ))}
         </div>
 
-        {/* ── DESKTOP: snap-enabled three-column layout ── */}
+        {/* ── DESKTOP ── */}
         <div className="hidden md:block w-full overflow-y-scroll snap-y snap-mandatory hide-scrollbar">
           {videos.map((video, index) => (
             <div
               key={video._id}
-              className="w-full h-screen snap-start grid"
-              style={{ gridTemplateColumns: "1fr auto 1fr" }}
+              className="w-full h-screen snap-start flex items-stretch justify-center"
             >
 
               {/* LEFT — caption / meta */}
-              <div className="flex items-end justify-end pb-24 pr-8">
+              <div className="flex-1 flex items-end justify-end pb-24 pr-8">
                 <div className="text-white flex flex-col gap-2 max-w-xs">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="bg-black h-10 w-10 rounded-full border border-white/20" />
@@ -128,19 +166,19 @@ const UserFeed = () => {
               {/* CENTER — full-height video */}
               <div className="relative h-screen w-[420px] flex-shrink-0">
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
+                  ref={(el) => setVideoRef(el, index)}
                   src={video.video}
                   className="h-full w-full object-cover"
-                  autoPlay
+                  muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
               </div>
 
-              {/* RIGHT — side panel pulled inward with pl, numbers styled */}
-              <div className="flex flex-col items-start justify-center pl-6">
+              {/* RIGHT — side panel pinned close to video */}
+              <div className="flex-1 flex items-center justify-start pl-6">
                 <div className="[&_span]:text-white [&_span]:font-bold [&_span]:text-sm [&_span]:tracking-wide">
                   <SidePanel
                     foodId={video._id}
